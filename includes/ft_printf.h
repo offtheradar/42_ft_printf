@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/24 14:51:24 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/24 15:16:53 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	handle_string(t_desc info, va_list *arg);
 
 void	handle_type(t_desc info, va_list *arg);
 
-void	ft_parse_desc(char *str, int *i, va_list arg, t_desc *info);
+void	ft_parse_desc(char *str, int *i, t_desc *info);
 
 void	format_type(t_desc *info);
 

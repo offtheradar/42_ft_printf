@@ -6,20 +6,19 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/24 14:36:20 by ysibous           #+#    #+#              #
-#    Updated: 2018/04/24 14:52:07 by ysibous          ###   ########.fr        #
+#    Updated: 2018/04/24 15:23:48 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = grimly
-
+NAME = main
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -o
+CFLAGS = -Wall -Wextra  -o
 
 FILES = ft_printf.c
 FILES += handle_char.c
-// FILES += handle_hex.c
+FILES += handle_hex.c
 FILES += handle_int.c
-// FILES += handle_long.c
+FILES += handle_long.c
 FILES += handle_str.c
 FILES += parse_init_desc.c
 
