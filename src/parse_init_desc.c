@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_init_desc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/23 20:57:58 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/24 14:52:51 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	handle_type(t_desc info, va_list *arg)
 		handle_hex(info, arg);
 }
 
-void	ft_parse_desc(char *str, int *i, va_list arg, t_desc *info)
+void	ft_parse_desc(char *str, int *i, t_desc *info)
 {
 	init_descriptor(info);
 	while (str[*i] && !IS_VALID_TYPE(str[*i]))

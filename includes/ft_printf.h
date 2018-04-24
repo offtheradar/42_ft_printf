@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/23 20:58:43 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/24 14:51:24 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,25 @@ typedef struct	s_desc
 	int		len_z;
 	int		min_f_width;
 	int		precision;
-}		t_desc;
+}				t_desc;
 
+int		ft_printf(char *format, ...);
+
+void	handle_hex(t_desc info, va_list *arg);
+
+void	handle_char(t_desc info, va_list *arg);
+
+void	handle_int(t_desc info, va_list *arg);
+
+void	handle_long(t_desc info, va_list *arg);
+
+void	handle_string(t_desc info, va_list *arg);
+
+void	handle_type(t_desc info, va_list *arg);
+
+void	ft_parse_desc(char *str, int *i, va_list arg, t_desc *info);
+
+void	format_type(t_desc *info);
+
+void	init_descriptor(t_desc *info);
 #endif
