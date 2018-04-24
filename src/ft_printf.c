@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysibous <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 20:56:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/23 20:58:18 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/24 14:30:44 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-#define IS_VALID_TYPE(x) (x == 'S' || x == 's' || x == 'p' || x == 'D' \
+# define IS_VALID_TYPE(x) (x == 'S' || x == 's' || x == 'p' || x == 'D' \
 				|| x == 'd' || x == 'i' || x == 'O' || \
 				x == 'u' || x == 'U' || x == 'x' || x == 'X' \
 				|| x == 'c' || x == 'C') ? 1 : 0
@@ -40,8 +40,7 @@ int		ft_printf(char *format, ...)
 	return (i);
 }
 
-int main(void)
+int		main(void)
 {
 	ft_printf("hello bob %s %s %c \n", "ann", "dude", 'k');
-	while (1){};
 }
