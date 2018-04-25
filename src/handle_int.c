@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/24 19:33:15 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/24 19:39:22 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,16 @@ void			ft_putnbr_uint_base(uintmax_t n, char *base_chars, intmax_t base)
 		ft_putchar(bases[n]);
 
 
+void			ft_putnbr_dispatch(uintmax_t n, t_desc info)
+{
+
+}
+
 void			handle_int(t_desc info, va_list *arg)
 {
 	intmax_t i;
 
 	i = cast_int_from_len(info, va_arg(*arg, intmax_t));
-	ft_putnbr(i);
+	ft_putnbr_dispatch(i, info);
 	return ;
 }
