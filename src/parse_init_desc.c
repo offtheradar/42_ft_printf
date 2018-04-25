@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/24 14:52:51 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/25 10:45:01 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	handle_type(t_desc info, va_list *arg)
 		handle_int(info, arg);
 	if (info.type == 'D' || info.type == 'O' || info.type == 'U')
 		handle_long(info, arg);
-	if (info.type == 'p')
-		handle_hex(info, arg);
+	/*if (info.type == 'p')
+		handle_hex(info, arg);*/
 }
 
 void	ft_parse_desc(char *str, int *i, t_desc *info)
@@ -44,11 +44,11 @@ void	ft_parse_desc(char *str, int *i, t_desc *info)
 			info->flag_neg = 1;
 		if (str[*i] == 'h' && str[*i + 1] && str[*i + 1] == 'h')
 			info->len_hh = 1;
-		if (str[*i] == 'h' && str[*i +1] != 'h')
+		if (str[*i] == 'h' && str[*i + 1] != 'h')
 			info->len_h = 1;
 		if (str[*i] == 'l' && str[*i + 1] && str[*i + 1] == 'l')
 			info->len_ll = 1;
-		if (str[*i] == 'l' && str[*i +1] != 'l')
+		if (str[*i] == 'l' && str[*i + 1] != 'l')
 			info->len_l = 1;
 		if (str[*i] == 'j')
 			info->len_j = 1;

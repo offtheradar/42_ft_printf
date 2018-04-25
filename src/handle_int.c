@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/24 19:39:22 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/25 10:49:46 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,37 @@ void			ft_putnbr_int_base(intmax_t n, char *base_chars, intmax_t base)
 	}
 	else if (n >= base)
 	{
-		ft_putnbr_int_base(n / 10, base_chars, base);
-		ft_putchar((n % 10) + '0', base_chars, base);
+		ft_putnbr_int_base(n / base, base_chars, base);
+		ft_putnbr_int_base(n % base, base_chars, base);
 	}
 	else
-		ft_putchar(bases[n]);
+		ft_putchar(base_chars[n]);
 }
 
-void			ft_putnbr_uint_base(uintmax_t n, char *base_chars, intmax_t base)
+void			ft_putnbr_uint_base(uintmax_t n, char *base_chars,
+										uintmax_t base)
 {
 	if (n >= base)
 	{
-		ft_putnbr_int_base(n / 10, base_chars, base);
-		ft_putchar((n % 10) + '0', base_chars, base);
+		ft_putnbr_uint_base(n / base, base_chars, base);
+		ft_putnbr_uint_base(n % base, base_chars, base);
 	}
 	else
-		ft_putchar(bases[n]);
+		ft_putchar(base_chars[n]);
+}
 
-
-void			ft_putnbr_dispatch(uintmax_t n, t_desc info)
+void			ft_putnbr_dispatch(intmax_t n, t_desc info)
 {
-
+	if (info.type == 'd' || info.type == 'i')
+		ft_putnbr_int_base(n, "0123456789", 10);
+	if (info.type == 'o')
+		ft_putnbr_uint_base(n, "01234567", 8);
+	if (info.type == 'u')
+		ft_putnbr_uint_base(n, "0123456789", 10);
+	if (info.type == 'x')
+		ft_putnbr_uint_base(n, "0123456789abcdef", 16);
+	if (info.type == 'X')
+		ft_putnbr_uint_base(n, "0123456789ABCDEF", 16);
 }
 
 void			handle_int(t_desc info, va_list *arg)
