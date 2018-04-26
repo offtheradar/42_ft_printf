@@ -6,11 +6,12 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 13:08:40 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/26 13:30:13 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <stdio.h>
 
 intmax_t		cast_uint_from_len(t_desc info, intmax_t i)
 {
@@ -145,7 +146,6 @@ void			handle_int(t_desc info, va_list *arg)
 			ft_putchar('+');
 	}
 	ft_print_num_flags(info);
-	printf("width is %d\n", info.min_f_width);
 	if (!info.precision && info.min_f_width > num_len && info.flag_zero)
 		ft_put_zero(info.min_f_width - num_len);
 	if (!info.precision && info.min_f_width > num_len && !info.flag_zero &&

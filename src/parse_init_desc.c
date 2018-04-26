@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 13:16:03 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/26 13:29:55 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,40 +34,39 @@ void	ft_parse_desc(char *str, int *i, t_desc *info)
 	{
 		if (str[*i] == '#')
 			info->flag_hash = 1;
-		if (str[*i] == '0')
+		else if (str[*i] == '0')
 			info->flag_zero = 1;
-		if (str[*i] == ' ')
+		else if (str[*i] == ' ')
 			info->flag_space = 1;
-		if (str[*i] == '+')
+		else if (str[*i] == '+')
 			info->flag_plus = 1;
-		if (str[*i] == '-')
+		else if (str[*i] == '-')
 			info->flag_neg = 1;
-		if (str[*i] == 'h' && str[*i + 1] && str[*i + 1] == 'h')
+		else if (str[*i] == 'h' && str[*i + 1] && str[*i + 1] == 'h')
 			info->len_hh = 1;
-		if (str[*i] == 'h' && str[*i + 1] != 'h')
+		else if (str[*i] == 'h' && str[*i + 1] != 'h')
 			info->len_h = 1;
-		if (str[*i] == 'l' && str[*i + 1] && str[*i + 1] == 'l')
+		else if (str[*i] == 'l' && str[*i + 1] && str[*i + 1] == 'l')
 			info->len_ll = 1;
-		if (str[*i] == 'l' && str[*i + 1] != 'l')
+		else if (str[*i] == 'l' && str[*i + 1] != 'l')
 			info->len_l = 1;
-		if (str[*i] == 'j')
+		else if (str[*i] == 'j')
 			info->len_j = 1;
-		if (str[*i] == 'z')
+		else if (str[*i] == 'z')
 			info->len_z = 1;
-		if (str[*i] == '.')
+		else if (str[*i] == '.')
 		{
 			info->precision = ft_atoi((str + *i + 1));
-			*i += 1;
-			while (str[*i] &&ft_isdigit(str[*i] )
-				*i += 1;
+			(*i) += 1;
+			while (str[*i] && ft_isdigit(str[*i]))
+				(*i) += 1;
 			*i -= 1;
 		}
-		if (ft_isdigit(str[*i]))
+		else if (ft_isdigit(str[*i]) && str[*i] != '0')
 		{
-			info->min_f_width = ft_atoi((str + *i + 1));
-			*i += 1;
-			while (str[*i] && ft_isdigit(str[*i])
-				*i += 1;
+			info->min_f_width = ft_atoi((str + *i));
+			while (str[*i] && ft_isdigit(str[*i]))
+				(*i) += 1;
 			*i -= 1;
 		}
 		(*i)++;
