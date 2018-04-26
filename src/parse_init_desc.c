@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/25 17:58:50 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/26 13:16:03 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,21 @@ void	ft_parse_desc(char *str, int *i, t_desc *info)
 		if (str[*i] == 'z')
 			info->len_z = 1;
 		if (str[*i] == '.')
+		{
 			info->precision = ft_atoi((str + *i + 1));
+			*i += 1;
+			while (str[*i] &&ft_isdigit(str[*i] )
+				*i += 1;
+			*i -= 1;
+		}
+		if (ft_isdigit(str[*i]))
+		{
+			info->min_f_width = ft_atoi((str + *i + 1));
+			*i += 1;
+			while (str[*i] && ft_isdigit(str[*i])
+				*i += 1;
+			*i -= 1;
+		}
 		(*i)++;
 	}
 	info->type = str[*i];

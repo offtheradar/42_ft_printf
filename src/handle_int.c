@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/25 17:57:48 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/26 13:08:40 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void			ft_print_num_flags(t_desc info)
 	}
 }
 
-int				num_len(intmax_t n)
+int				ft_num_len(intmax_t n)
 {
 	int len;
 
@@ -121,24 +121,57 @@ void			ft_put_zero(int num_zero)
 	}
 }
 
+void			ft_put_space(int num_zero)
+{
+	while (num_zero)
+	{
+		ft_putchar(' ');
+		num_zero--;
+	}
+}
+
 void			handle_int(t_desc info, va_list *arg)
 {
-	intmax_t i;
+	intmax_t	i;
+	int			num_len;
 
 	i = cast_int_from_len(info, va_arg(*arg, intmax_t));
+	num_len = ft_num_len(i);
+	if (info.flag_plus)
+	{
+		if (i < 0)
+			ft_putchar('-');
+		else
+			ft_putchar('+');
+	}
 	ft_print_num_flags(info);
-	if (info.precision > num_len(i))
-		ft_put_zero((int)(info.precision - num_len(i)));
+	printf("width is %d\n", info.min_f_width);
+	if (!info.precision && info.min_f_width > num_len && info.flag_zero)
+		ft_put_zero(info.min_f_width - num_len);
+	if (!info.precision && info.min_f_width > num_len && !info.flag_zero &&
+				!info.flag_neg)
+		ft_put_space((int)(info.min_f_width - num_len));
+	if (info.min_f_width > (info.precision - num_len) && info.flag_zero && !info.flag_neg)
+		ft_put_space((int)(info.min_f_width - (info.precision - num_len)));
+	if (info.precision > num_len)
+		ft_put_zero((int)(info.precision - num_len));
 	ft_putnbr_int_base(i, "0123456789", 10);
+	if (!info.precision && info.min_f_width > num_len && !info.flag_zero &&
+			info.flag_neg)
+		ft_put_space((int)(info.min_f_width - num_len));
 	return ;
 }
 
 void			handle_uint(t_desc info, va_list *arg)
 {
-	uintmax_t i;
+	uintmax_t 	i;
+	int			num_len;
 
 	i = cast_int_from_len(info, va_arg(*arg, uintmax_t));
+	num_len = ft_num_len(i);
 	ft_print_num_flags(info);
+	if (info.precision > num_len)
+		ft_put_zero((int)(info.precision - num_len));
 	ft_putnbr_dispatch(i, info);
 	return ;
 }
