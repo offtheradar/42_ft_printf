@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/25 10:49:46 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/25 17:57:48 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,49 @@ void			ft_putnbr_uint_base(uintmax_t n, char *base_chars,
 
 void			ft_putnbr_dispatch(intmax_t n, t_desc info)
 {
-	if (info.type == 'd' || info.type == 'i')
-		ft_putnbr_int_base(n, "0123456789", 10);
 	if (info.type == 'o')
 		ft_putnbr_uint_base(n, "01234567", 8);
 	if (info.type == 'u')
 		ft_putnbr_uint_base(n, "0123456789", 10);
-	if (info.type == 'x')
+	if (info.type == 'x' || info.type == 'p')
 		ft_putnbr_uint_base(n, "0123456789abcdef", 16);
 	if (info.type == 'X')
 		ft_putnbr_uint_base(n, "0123456789ABCDEF", 16);
+}
+
+void			ft_print_num_flags(t_desc info)
+{
+	if (info.flag_hash)
+	{
+		if (info.type == 'o')
+			ft_putchar('0');
+		if (info.type == 'x')
+			ft_putstr("0x");
+		if (info.type == 'X')
+			ft_putstr("0X");
+	}
+}
+
+int				num_len(intmax_t n)
+{
+	int len;
+
+	len = 0;
+	while (n)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
+}
+
+void			ft_put_zero(int num_zero)
+{
+	while (num_zero)
+	{
+		ft_putchar('0');
+		num_zero--;
+	}
 }
 
 void			handle_int(t_desc info, va_list *arg)
@@ -93,6 +126,19 @@ void			handle_int(t_desc info, va_list *arg)
 	intmax_t i;
 
 	i = cast_int_from_len(info, va_arg(*arg, intmax_t));
+	ft_print_num_flags(info);
+	if (info.precision > num_len(i))
+		ft_put_zero((int)(info.precision - num_len(i)));
+	ft_putnbr_int_base(i, "0123456789", 10);
+	return ;
+}
+
+void			handle_uint(t_desc info, va_list *arg)
+{
+	uintmax_t i;
+
+	i = cast_int_from_len(info, va_arg(*arg, uintmax_t));
+	ft_print_num_flags(info);
 	ft_putnbr_dispatch(i, info);
 	return ;
 }

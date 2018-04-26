@@ -6,11 +6,12 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/25 10:45:01 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/25 17:58:50 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <stdio.h>
 
 void	handle_type(t_desc info, va_list *arg)
 {
@@ -18,13 +19,12 @@ void	handle_type(t_desc info, va_list *arg)
 		handle_string(info, arg);
 	if (info.type == 'c' || info.type == 'C' || info.type == '%')
 		handle_char(info, arg);
-	if (info.type == 'd' || info.type == 'i' || info.type == 'o' ||
-			info.type == 'u' || info.type == 'x' || info.type == 'X')
+	if (info.type == 'o' || info.type == 'u' || info.type == 'x' ||
+		info.type == 'X' || info.type == 'p')
+		handle_uint(info, arg);
+	if (info.type == 'D' || info.type == 'O' || info.type == 'U' ||
+		info.type == 'd' || info.type == 'i')
 		handle_int(info, arg);
-	if (info.type == 'D' || info.type == 'O' || info.type == 'U')
-		handle_long(info, arg);
-	/*if (info.type == 'p')
-		handle_hex(info, arg);*/
 }
 
 void	ft_parse_desc(char *str, int *i, t_desc *info)
@@ -54,6 +54,8 @@ void	ft_parse_desc(char *str, int *i, t_desc *info)
 			info->len_j = 1;
 		if (str[*i] == 'z')
 			info->len_z = 1;
+		if (str[*i] == '.')
+			info->precision = ft_atoi((str + *i + 1));
 		(*i)++;
 	}
 	info->type = str[*i];
