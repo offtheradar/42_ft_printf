@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 13:30:13 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/26 20:18:08 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,24 +113,6 @@ int				ft_num_len(intmax_t n)
 	return (len);
 }
 
-void			ft_put_zero(int num_zero)
-{
-	while (num_zero)
-	{
-		ft_putchar('0');
-		num_zero--;
-	}
-}
-
-void			ft_put_space(int num_zero)
-{
-	while (num_zero)
-	{
-		ft_putchar(' ');
-		num_zero--;
-	}
-}
-
 void			handle_int(t_desc info, va_list *arg)
 {
 	intmax_t	i;
@@ -151,7 +133,8 @@ void			handle_int(t_desc info, va_list *arg)
 	if (!info.precision && info.min_f_width > num_len && !info.flag_zero &&
 				!info.flag_neg)
 		ft_put_space((int)(info.min_f_width - num_len));
-	if (info.min_f_width > (info.precision - num_len) && info.flag_zero && !info.flag_neg)
+	if (info.min_f_width > (info.precision - num_len) &&
+		info.flag_zero && !info.flag_neg)
 		ft_put_space((int)(info.min_f_width - (info.precision - num_len)));
 	if (info.precision > num_len)
 		ft_put_zero((int)(info.precision - num_len));
@@ -173,5 +156,4 @@ void			handle_uint(t_desc info, va_list *arg)
 	if (info.precision > num_len)
 		ft_put_zero((int)(info.precision - num_len));
 	ft_putnbr_dispatch(i, info);
-	return ;
 }

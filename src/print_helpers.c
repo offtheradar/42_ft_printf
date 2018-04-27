@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   print_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/24 20:56:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 20:52:37 by ysibous          ###   ########.fr       */
+/*   Created: 2018/04/26 20:05:56 by ysibous           #+#    #+#             */
+/*   Updated: 2018/04/26 20:24:12 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
-int		ft_printf(char *format, ...)
+void			ft_put_zero(int num_zero)
 {
-	va_list	arg;
-	t_desc	info;
-	int		i;
-
-	i = 0;
-	va_start(arg, format);
-	while (format[i])
+	while (num_zero)
 	{
-		if (format[i] == '%')
-		{
-			ft_parse_desc(format, &i, &info);
-			handle_type(info, &arg);
-		}
-		else if (format[i])
-			ft_putchar(format[i]);
-		i++;
+		ft_putchar('0');
+		num_zero--;
 	}
-	va_end(arg);
-	return (i);
 }
 
-int		main(void)
+void			ft_put_space(int num_zero)
 {
-	ft_printf("hello bob %05c\n", 'a');
-	printf("%5c", 'a');
+	while (num_zero)
+	{
+		ft_putchar(' ');
+		num_zero--;
+	}
 }

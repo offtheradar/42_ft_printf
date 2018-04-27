@@ -6,7 +6,7 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/24 14:36:20 by ysibous           #+#    #+#              #
-#    Updated: 2018/04/25 16:58:05 by ysibous          ###   ########.fr        #
+#    Updated: 2018/04/26 20:17:35 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ FILES += handle_char.c
 FILES += handle_int.c
 FILES += handle_str.c
 FILES += parse_init_desc.c
+FILES += print_helpers.c
 
 SRC = $(addprefix src/, $(FILES))
 
