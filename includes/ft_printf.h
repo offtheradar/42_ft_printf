@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 20:16:58 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/27 11:02:29 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct	s_desc
 	int		len_z;
 	int		min_f_width;
 	int		precision;
+	char	filler;
 }				t_desc;
 
 int				ft_printf(char *format, ...);
@@ -74,4 +75,6 @@ void			handle_uint(t_desc info, va_list *arg);
 void			ft_put_zero(int num_zero);
 
 void			ft_put_space(int num_zero);
+
+void			ft_put_filler(char filler, int n);
 #endif

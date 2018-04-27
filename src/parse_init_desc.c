@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 13:29:55 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/27 10:46:14 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ void		init_descriptor(t_desc *info)
 	(info)->len_z = 0;
 	(info)->min_f_width = 0;
 	(info)->precision = 0;
+	info->filler = ' ';
 }

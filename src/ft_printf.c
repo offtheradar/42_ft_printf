@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 20:56:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 20:52:37 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/27 11:13:36 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int		ft_printf(char *format, ...)
 
 int		main(void)
 {
-	ft_printf("hello bob %05c\n", 'a');
-	printf("%5c", 'a');
+	ft_printf("hello bob %025s\n", "what's up?");
+	printf("hello bob %025s\n", "what's up?");
 }
