@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/27 11:02:29 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/27 16:38:47 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,18 @@ void			ft_put_zero(int num_zero);
 void			ft_put_space(int num_zero);
 
 void			ft_put_filler(char filler, int n);
+
+/*
+**************************** Handle Wide String & Char **************
+*/
+
+void			ft_putwchar(wchar_t c);
+
+void			ft_putwstrn(wchar_t *s, int n);
+
+void			ft_putwstr_w_filler(wchar_t *str, int len, t_desc info);
+
+void			handle_wchar(t_desc info, va_list *arg);
+
+void			handle_wstring(t_desc info, va_list *arg);
 #endif

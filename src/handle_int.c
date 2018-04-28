@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/26 20:18:08 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/27 16:31:18 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void			handle_int(t_desc info, va_list *arg)
 
 void			handle_uint(t_desc info, va_list *arg)
 {
-	uintmax_t 	i;
+	uintmax_t	i;
 	int			num_len;
 
 	i = cast_int_from_len(info, va_arg(*arg, uintmax_t));
