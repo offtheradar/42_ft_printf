@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 20:56:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 21:41:49 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 21:52:12 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_printf(char *format, ...)
 		{
 			i++;
 			ft_parse_desc(format, &(i), &info);
-			handle_type(info, &arg);
+			handle_type(info, &arg, &str_len);
 		}
 		else if (format[i])
 			ft_putchar(format[i]);
@@ -41,6 +41,6 @@ int		ft_printf(char *format, ...)
 
 int		main(void)
 {
-	ft_printf("%u\n", 10);
-	printf("%u", 10);
+	ft_printf("%c\n", 'a');
+	printf("%c", 'astrl');
 }

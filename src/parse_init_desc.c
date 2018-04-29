@@ -6,27 +6,27 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 17:58:15 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 21:44:23 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-void	handle_type(t_desc info, va_list *arg)
+void	handle_type(t_desc info, va_list *arg, t_strlen *len)
 {
 	if (info.type == 's' || info.type == 'S')
-		handle_string(info, arg);
+		handle_string(info, arg, len);
 	if (info.type == '%')
-		handle_percent(info, arg);
+		handle_percent(info, arg, len);
 	if (info.type == 'c' || info.type == 'C')
-		handle_char(info, arg);
+		handle_char(info, arg, len);
 	if (info.type == 'o' || info.type == 'u' || info.type == 'x' ||
 		info.type == 'X' || info.type == 'p')
-		handle_uint(info, arg);
+		handle_uint(info, arg, len);
 	if (info.type == 'D' || info.type == 'O' || info.type == 'U' ||
 		info.type == 'd' || info.type == 'i')
-		handle_int(info, arg);
+		handle_int(info, arg, len);
 }
 
 void	ft_parse_desc(char *str, int *i, t_desc *info)

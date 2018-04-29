@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 21:41:33 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 21:48:03 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			ft_print_back_padding(t_desc info, int num_len)
 		ft_put_filler(' ', pad_size);
 }
 
-void			handle_int(t_desc info, va_list *arg)
+void			handle_int(t_desc info, va_list *arg, t_strlen *len)
 {
 	intmax_t	i;
 	uintmax_t	u;
@@ -84,7 +84,7 @@ void			handle_int(t_desc info, va_list *arg)
 	return ;
 }
 
-void			handle_uint(t_desc info, va_list *arg)
+void			handle_uint(t_desc info, va_list *arg, t_strlen *len)
 {
 	uintmax_t	i;
 	int			num_len;

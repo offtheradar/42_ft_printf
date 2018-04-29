@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 18:54:29 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 21:48:40 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,17 @@ int				is_valid_type(char x);
 
 int				ft_printf(char *format, ...);
 
-void			handle_hex(t_desc info, va_list *arg);
+void			handle_char(t_desc info, va_list *arg, t_strlen *len);
 
-void			handle_char(t_desc info, va_list *arg);
+void			handle_percent(t_desc info, va_list *arg, t_strlen *len);
 
-void			handle_percent(t_desc info, va_list *arg);
+void			handle_int(t_desc info, va_list *arg, t_strlen *len);
 
-void			handle_int(t_desc info, va_list *arg);
+void			handle_uint(t_desc info, va_list *arg, t_strlen *len);
 
-void			handle_long(t_desc info, va_list *arg);
+void			handle_string(t_desc info, va_list *arg, t_strlen *len);
 
-void			handle_string(t_desc info, va_list *arg);
-
-void			handle_type(t_desc info, va_list *arg);
+void			handle_type(t_desc info, va_list *arg, t_strlen *len);
 
 void			ft_parse_desc(char *str, int *i, t_desc *info);
 
@@ -70,10 +68,6 @@ void			ft_putnbr_uint_base(uintmax_t n, char *base_chars,
 										uintmax_t base);
 
 void			ft_putnbr_dispatch(intmax_t n, t_desc info);
-
-void			handle_int(t_desc info, va_list *arg);
-
-void			handle_uint(t_desc info, va_list *arg);
 
 void			ft_put_zero(int num_zero);
 

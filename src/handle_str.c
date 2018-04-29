@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:53:18 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/27 16:16:38 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 21:50:33 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_putstr_w_filler(char *str, int len, t_desc info)
 		ft_putstrn(str, len);
 }
 
-void	handle_string(t_desc info, va_list *arg)
+void	handle_string(t_desc info, va_list *arg, t_strlen *str_len)
 {
 	char	*str;
 	int		len;

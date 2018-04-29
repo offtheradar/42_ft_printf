@@ -6,13 +6,13 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:54:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 16:42:38 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 21:52:08 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	handle_char(t_desc info, va_list *arg)
+void	handle_char(t_desc info, va_list *arg, t_strlen *len)
 {
 	char c;
 
@@ -25,15 +25,22 @@ void	handle_char(t_desc info, va_list *arg)
 	{
 		ft_putchar(c);
 		ft_put_filler(' ', info.min_f_width - 1);
+		(*len) += info.min_f_width;
 	}
-	else
+	else if (info.min_f_width)
 	{
 		ft_put_filler(info.filler, info.min_f_width - 1);
 		ft_putchar(c);
+		(*len) += info.min_f_width;
+	}
+	else
+	{
+		ft_putchar(c);
+		(*len)++;
 	}
 }
 
-void	handle_percent(t_desc info, va_list *arg)
+void	handle_percent(t_desc info, va_list *arg, t_strlen *len)
 {
 	char c;
 
@@ -45,11 +52,17 @@ void	handle_percent(t_desc info, va_list *arg)
 	if (info.flag_neg)
 	{
 		ft_putchar('%');
-		ft_put_filler(' ', info.min_f_width - 1);
+		(*len) += info.min_f_width;
 	}
-	else
+	else if (info.min_f_width)
 	{
 		ft_put_filler(info.filler, info.min_f_width - 1);
 		ft_putchar('%');
+		(*len) += info.min_f_width;
+	}
+	else
+	{
+		ft_putchar('%');
+		(*len)++;
 	}
 }
