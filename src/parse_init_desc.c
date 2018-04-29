@@ -6,12 +6,11 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 21:44:23 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 12:27:06 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
 void	handle_type(t_desc info, va_list *arg, t_strlen *len)
 {
@@ -41,7 +40,7 @@ void	ft_parse_desc(char *str, int *i, t_desc *info)
 	format_type(info);
 }
 
-void		format_type(t_desc *info)
+void	format_type(t_desc *info)
 {
 	if ((info)->type == 'C' || (info)->type == 'S' || info->type == 'p')
 		(info)->len_l = 1;
@@ -49,7 +48,7 @@ void		format_type(t_desc *info)
 		info->flag_hash = 1;
 }
 
-void		init_descriptor(t_desc *info)
+void	init_descriptor(t_desc *info)
 {
 	(info)->type = 0;
 	(info)->flag_hash = 0;

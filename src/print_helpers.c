@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 20:05:56 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 18:03:38 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 11:51:10 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			ft_print_num_flags(t_desc info)
 	{
 		if (info.type == 'o')
 			ft_putchar('0');
-		if (info.type == 'x')
+		if (info.type == 'x' || info.type == 'p')
 			ft_putstr("0x");
 		if (info.type == 'X')
 			ft_putstr("0X");

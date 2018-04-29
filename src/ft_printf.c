@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 20:56:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 21:52:12 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 11:51:25 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int		ft_printf(char *format, ...)
 
 int		main(void)
 {
-	ft_printf("%c\n", 'a');
-	printf("%c", 'astrl');
+	int *i;
+
+	i = ft_memalloc(sizeof(int));
+	*i = 4;
+	ft_printf("%p\n", i);
+	printf("%p\n", i);
 }
