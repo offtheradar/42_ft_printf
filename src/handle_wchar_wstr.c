@@ -6,28 +6,23 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 16:13:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/27 17:02:09 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 16:36:22 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-size_t  ft_wstrlen(wchar_t *str)
+size_t	ft_wstrlen(wchar_t *str)
 {
-        int len;
+	int len;
 
-        len = 0;
-        while (*str)
-        {
-                len++;
-                str++;
-        }
-        return (len);
-}
-
-void    ft_putwchar(wchar_t c)
-{
-    write(1, &c, 1);
+	len = 0;
+	while (*str)
+	{
+		len++;
+		str++;
+	}
+	return (len);
 }
 
 void	ft_putwstrn(wchar_t *s, int n)

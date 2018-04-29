@@ -6,21 +6,18 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/27 16:38:47 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 18:54:29 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # include "libft/libft.h"
 # include <stdarg.h>
-# define IS_VALID_TYPE(x) (x == 'S' || x == 's' || x == 'p' || x == 'D' \
-				|| x == 'd' || x == 'i' || x == 'O' || \
-				x == 'u' || x == 'U' || x == 'x' || x == 'X' \
-				|| x == 'c' || x == 'C') ? 1 : 0
 
 typedef struct	s_desc
 {
 	char	type;
+	char	sign;
 	int		flag_hash;
 	int		flag_zero;
 	int		flag_neg;
@@ -37,11 +34,17 @@ typedef struct	s_desc
 	char	filler;
 }				t_desc;
 
+typedef	int		t_strlen;
+
+int				is_valid_type(char x);
+
 int				ft_printf(char *format, ...);
 
 void			handle_hex(t_desc info, va_list *arg);
 
 void			handle_char(t_desc info, va_list *arg);
+
+void			handle_percent(t_desc info, va_list *arg);
 
 void			handle_int(t_desc info, va_list *arg);
 
@@ -78,6 +81,16 @@ void			ft_put_space(int num_zero);
 
 void			ft_put_filler(char filler, int n);
 
+void			set_flags(char *str, int *i, t_desc *info);
+
+void			set_len(char *str, int *i, t_desc *info);
+
+void			set_width(char *str, int *i, t_desc *info);
+
+void			set_precision(char *str, int *i, t_desc *info);
+
+void			ft_print_num_flags(t_desc info);
+
 /*
 **************************** Handle Wide String & Char **************
 */
@@ -91,4 +104,12 @@ void			ft_putwstr_w_filler(wchar_t *str, int len, t_desc info);
 void			handle_wchar(t_desc info, va_list *arg);
 
 void			handle_wstring(t_desc info, va_list *arg);
+
+intmax_t		cast_uint_from_len(t_desc info, intmax_t i);
+
+uintmax_t		cast_int_from_len(t_desc info, uintmax_t i);
+
+int				ft_num_len(intmax_t n);
+
+int				ft_unum_len(uintmax_t n);
 #endif

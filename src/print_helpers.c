@@ -6,27 +6,22 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 20:05:56 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/27 11:02:14 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 18:03:38 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void			ft_put_zero(int num_zero)
+void			ft_print_num_flags(t_desc info)
 {
-	while (num_zero)
+	if (info.flag_hash)
 	{
-		ft_putchar('0');
-		num_zero--;
-	}
-}
-
-void			ft_put_space(int num_zero)
-{
-	while (num_zero)
-	{
-		ft_putchar(' ');
-		num_zero--;
+		if (info.type == 'o')
+			ft_putchar('0');
+		if (info.type == 'x')
+			ft_putstr("0x");
+		if (info.type == 'X')
+			ft_putstr("0X");
 	}
 }
 
@@ -37,4 +32,32 @@ void			ft_put_filler(char filler, int n)
 		ft_putchar(filler);
 		n--;
 	}
+}
+
+void			ft_putnbr_int_base(intmax_t n, char *base_chars, intmax_t base)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr_int_base(-n, base_chars, base);
+	}
+	else if (n >= base)
+	{
+		ft_putnbr_int_base(n / base, base_chars, base);
+		ft_putnbr_int_base(n % base, base_chars, base);
+	}
+	else
+		ft_putchar(base_chars[n]);
+}
+
+void			ft_putnbr_uint_base(uintmax_t n, char *base_chars,
+										uintmax_t base)
+{
+	if (n >= base)
+	{
+		ft_putnbr_uint_base(n / base, base_chars, base);
+		ft_putnbr_uint_base(n % base, base_chars, base);
+	}
+	else
+		ft_putchar(base_chars[n]);
 }
