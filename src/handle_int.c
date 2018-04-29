@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 20:54:24 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/28 21:41:33 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,19 @@ void			ft_print_front_padding(t_desc info, int num_len)
 	}
 }
 
-void			ft_print_back_padding(t_desc in)
+void			ft_print_back_padding(t_desc info, int num_len)
+{
+	int pad_size;
+
+	pad_size = 0;
+	if (info.precision && info.precision > num_len)
+		pad_size = info.min_f_width - info.precision;
+	else
+		pad_size = info.min_f_width - num_len;
+	if (info.flag_neg)
+		ft_put_filler(' ', pad_size);
+}
+
 void			handle_int(t_desc info, va_list *arg)
 {
 	intmax_t	i;
@@ -63,9 +75,12 @@ void			handle_int(t_desc info, va_list *arg)
 		info.sign = '+';
 	}
 	num_len = ft_unum_len(u);
-	ft_print_front_padding(info, num_len);
+	if (info.min_f_width || info.precision)
+		ft_print_front_padding(info, num_len);
 	ft_print_num_flags(info);
 	ft_putnbr_int_base(i, "0123456789", 10);
+	if (info.min_f_width || info.precision)
+		ft_print_back_padding(info, num_len);
 	return ;
 }
 
@@ -76,6 +91,10 @@ void			handle_uint(t_desc info, va_list *arg)
 
 	i = cast_int_from_len(info, va_arg(*arg, uintmax_t));
 	num_len = ft_unum_len(i);
+	if (info.min_f_width || info.precision)
+		ft_print_front_padding(info, num_len);
 	ft_print_num_flags(info);
 	ft_putnbr_dispatch(i, info);
+	if (info.min_f_width || info.precision)
+		ft_print_back_padding(info, num_len);
 }
