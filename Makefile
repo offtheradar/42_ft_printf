@@ -6,7 +6,7 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/24 14:36:20 by ysibous           #+#    #+#              #
-#    Updated: 2018/04/30 00:19:30 by ysibous          ###   ########.fr        #
+#    Updated: 2018/04/30 00:28:38 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,15 +48,15 @@ OBJ = $(SRC:.c=.o)
 
 LIBFT = includes/libft/libft.a
 
-mlibft.a:
-		make re -C includes -C libft
+#mlibft.a:
+#		make re -C includes -C libft
 
 #$(NAME): mlibft.a
 #	$(CC) $(CFLAGS) -c $(SRC) $(LIB)
 #	ar rcs $(NAME) *.o
 #	ranlib $(NAME)
 
-$(NAME): mlibft.a
+$(NAME):
 	$(CC) $(CFLAGS) -c src/*.c includes/libft/*.c -I includes -I includes/libft $(LIB)
 	ar rcs $(NAME) *.o
 	ranlib $(NAME)
