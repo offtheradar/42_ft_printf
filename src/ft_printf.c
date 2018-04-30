@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 20:56:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 18:10:11 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 18:47:34 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_printf(char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			ft_parse_desc(format, &(i), &info);
+			ft_parse_desc(format, &(i), &info, &arg);
 			handle_type(info, &arg, &str_len);
 		}
 		else if (format[i])

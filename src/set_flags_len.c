@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 16:48:30 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 12:26:34 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 18:45:13 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void	set_len(char *str, int *i, t_desc *info)
 	}
 }
 
-void	set_width(char *str, int *i, t_desc *info)
+void	set_width(char *str, int *i, t_desc *info, va_list *arg)
 {
-	if (str[*i] && ft_isdigit(str[*i]))
+	if (str[*i] && (str[*i]) == '*')
+		info->min_f_width = va_arg(*arg, int);
+	else if (str[*i] && ft_isdigit(str[*i]))
 	{
 		info->min_f_width = ft_atoi((str + *i));
 		while (str[*i] && ft_isdigit(str[*i]))
@@ -60,13 +62,18 @@ void	set_width(char *str, int *i, t_desc *info)
 	}
 }
 
-void	set_precision(char *str, int *i, t_desc *info)
+void	set_precision(char *str, int *i, t_desc *info, va_list *arg)
 {
 	if (str[*i] && str[*i] == '.')
 	{
-		info->precision = ft_atoi((str + *i + 1));
-		(*i) += 1;
-		while (str[*i] && ft_isdigit(str[*i]))
+		if (str[*i + 1] == '*')
+			info->precision = va_arg(*arg, int);
+		else
+		{
+			info->precision = ft_atoi((str + *i + 1));
 			(*i) += 1;
+			while (str[*i] && ft_isdigit(str[*i]))
+				(*i) += 1;
+		}
 	}
 }

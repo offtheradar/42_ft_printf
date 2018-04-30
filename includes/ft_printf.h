@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 17:53:26 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 18:47:19 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int				ft_printf(char *format, ...);
 
 void			handle_type(t_desc info, va_list *arg, t_strlen *len);
 
-void			ft_parse_desc(char *str, int *i, t_desc *info);
+void			ft_parse_desc(char *str, int *i, t_desc *info, va_list *arg);
 
 int				is_valid_type(char x);
 
@@ -113,8 +113,8 @@ void			set_flags(char *str, int *i, t_desc *info);
 
 void			set_len(char *str, int *i, t_desc *info);
 
-void			set_width(char *str, int *i, t_desc *info);
+void			set_width(char *str, int *i, t_desc *info, va_list *arg);
 
-void			set_precision(char *str, int *i, t_desc *info);
+void			set_precision(char *str, int *i, t_desc *info, va_list *arg);
 
 #endif
