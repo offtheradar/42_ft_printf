@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 22:00:44 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/30 14:50:37 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,21 @@ void			ft_print_front_padding(t_desc info, int num_len, t_strlen *len)
 	int pad_size;
 
 	pad_size = 0;
-	if ((info.type == 'x' || info.type == 'X' || info.type == 'p') &&
-		info.min_f_width)
-		info.min_f_width -= 2;
-	if (info.type == 'o' && info.min_f_width)
-		info.min_f_width -= 1;
-	if (info.precision && info.min_f_width > info.precision
-			&& info.precision > num_len)
-		pad_size = info.min_f_width - info.precision;
-	else if (info.precision && info.min_f_width && info.precision > num_len)
-		pad_size = info.min_f_width - num_len;
-	if (!info.flag_neg && pad_size)
-		ft_put_filler(info.filler, pad_size, len);
+	if (info.min_f_width || info.precision)
+	{
+		if ((info.type == 'x' || info.type == 'X' || info.type == 'p') &&
+			info.min_f_width)
+			info.min_f_width -= 2;
+		if (info.type == 'o' && info.min_f_width)
+			info.min_f_width -= 1;
+		if (info.precision && info.min_f_width > info.precision
+				&& info.precision > num_len)
+			pad_size = info.min_f_width - info.precision;
+		else if (info.precision && info.min_f_width && info.precision > num_len)
+			pad_size = info.min_f_width - num_len;
+		if (!info.flag_neg && pad_size)
+			ft_put_filler(info.filler, pad_size, len);
+	}
 	ft_print_num_flags(&info, len);
 	while (info.precision >= num_len)
 	{
@@ -83,8 +86,7 @@ void			handle_int(t_desc info, va_list *arg, t_strlen *len)
 		info.sign = '+';
 	}
 	num_len = ft_unum_len(u);
-	if (info.min_f_width || info.precision)
-		ft_print_front_padding(info, num_len, len);
+	ft_print_front_padding(info, num_len, len);
 	ft_putnbr_int_base(i, "0123456789", 10, len);
 	if (info.min_f_width || info.precision)
 		ft_print_back_padding(info, num_len, len);
@@ -98,8 +100,7 @@ void			handle_uint(t_desc info, va_list *arg, t_strlen *len)
 
 	i = cast_int_from_len(info, va_arg(*arg, uintmax_t));
 	num_len = ft_unum_len(i);
-	if (info.min_f_width || info.precision)
-		ft_print_front_padding(info, num_len, len);
+	ft_print_front_padding(info, num_len, len);
 	ft_putnbr_dispatch(i, info, len);
 	if (info.min_f_width || info.precision)
 		ft_print_back_padding(info, num_len, len);
