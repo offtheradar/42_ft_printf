@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 20:05:56 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 21:13:33 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/30 14:36:27 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			ft_print_num_flags(t_desc *info, t_strlen *len)
 {
-	if (info->flag_hash)
+	if (info->flag_hash || info->type == 'p')
 	{
 		if (info->type == 'o')
 		{
