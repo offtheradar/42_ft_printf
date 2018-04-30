@@ -6,27 +6,27 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 20:05:56 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 18:04:20 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 21:13:33 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void			ft_print_num_flags(t_desc info, t_strlen *len)
+void			ft_print_num_flags(t_desc *info, t_strlen *len)
 {
-	if (info.flag_hash)
+	if (info->flag_hash)
 	{
-		if (info.type == 'o')
+		if (info->type == 'o')
 		{
 			ft_putchar('0');
 			(*len)++;
 		}
-		if (info.type == 'x' || info.type == 'p')
+		if (info->type == 'x' || info->type == 'p')
 		{
 			ft_putstr("0x");
 			(*len) += 2;
 		}
-		if (info.type == 'X')
+		if (info->type == 'X')
 		{
 			ft_putstr("0X");
 			(*len) += 2;

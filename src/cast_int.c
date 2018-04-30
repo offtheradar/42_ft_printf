@@ -6,13 +6,13 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 17:59:49 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 18:01:05 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 22:06:17 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-intmax_t		cast_uint_from_len(t_desc info, intmax_t i)
+uintmax_t		cast_uint_from_len(t_desc info, uintmax_t i)
 {
 	if (info.len_hh)
 		return ((unsigned char)i);
@@ -29,7 +29,7 @@ intmax_t		cast_uint_from_len(t_desc info, intmax_t i)
 	return ((unsigned int)i);
 }
 
-uintmax_t		cast_int_from_len(t_desc info, uintmax_t i)
+intmax_t		cast_int_from_len(t_desc info, intmax_t i)
 {
 	if (info.len_hh)
 		return ((char)i);

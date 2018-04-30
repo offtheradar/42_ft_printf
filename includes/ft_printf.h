@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 18:47:19 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 23:35:44 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void			handle_int(t_desc info, va_list *arg, t_strlen *len);
 
 void			handle_uint(t_desc info, va_list *arg, t_strlen *len);
 
-intmax_t		cast_uint_from_len(t_desc info, intmax_t i);
+uintmax_t		cast_uint_from_len(t_desc info, uintmax_t i);
 
-uintmax_t		cast_int_from_len(t_desc info, uintmax_t i);
+intmax_t		cast_int_from_len(t_desc info, intmax_t i);
 
 int				ft_num_len(intmax_t n);
 
@@ -98,11 +98,7 @@ void			ft_putnbr_uint_base(uintmax_t n, char *base_chars,
 
 void			ft_putnbr_dispatch(intmax_t n, t_desc info, t_strlen *len);
 
-intmax_t		cast_uint_from_len(t_desc info, intmax_t i);
-
-uintmax_t		cast_int_from_len(t_desc info, uintmax_t i);
-
-void			ft_print_num_flags(t_desc info, t_strlen *len);
+void			ft_print_num_flags(t_desc *info, t_strlen *len);
 /*
 ****************************** Handle Flags ************************************
 */
