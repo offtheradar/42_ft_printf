@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 16:13:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 17:47:40 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 18:09:09 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_putwstr_w_filler(wchar_t *str, int len, t_desc info,
 	else
 	{
 		ft_putwstrn(str, len);
+		*(str_len) += len;
 	}
 }
 
