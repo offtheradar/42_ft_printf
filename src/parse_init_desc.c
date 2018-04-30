@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 18:46:43 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/30 00:38:30 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	handle_type(t_desc info, va_list *arg, t_strlen *len)
 	if (info.type == '%')
 		handle_percent(info, arg, len);
 	if (info.type == 'c' || info.type == 'C')
-		handle_char(info, arg, len);
+		handle_char(info, len);
 	if (info.type == 'o' || info.type == 'u' || info.type == 'x' ||
 		info.type == 'X' || info.type == 'p')
 		handle_uint(info, arg, len);
