@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:54:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 17:02:37 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/30 00:34:58 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ void	handle_char(t_desc info, va_list *arg, t_strlen *len)
 
 void	handle_percent(t_desc info, va_list *arg, t_strlen *len)
 {
-	char c;
-
-	c = va_arg(*arg, int);
 	if (info.flag_zero)
 		info.filler = '0';
 	if (info.flag_neg)
