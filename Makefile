@@ -6,13 +6,13 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/24 14:36:20 by ysibous           #+#    #+#              #
-#    Updated: 2018/04/28 18:54:43 by ysibous          ###   ########.fr        #
+#    Updated: 2018/04/29 18:35:10 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 FILES = ft_printf.c
 FILES += handle_char.c
@@ -29,18 +29,22 @@ RM = rm -f
 
 SRC = $(addprefix src/, $(FILES))
 
+OBJ = $(SRC:.c=.o)
+
 LIBFT = includes/libft/libft.a
 
-mlibft.a: 
-		make -C includes -C libft
+mlibft.a:
+		make re -C includes -C libft
 
 $(NAME): mlibft.a
-	$(CC) $(CFLAGS) $(LIBFT) $(SRC)	
+	$(CC) $(CFLAGS) -c $(SRC)
+	ar rcs $(NAME) *.o
+	ranlib $(NAME)
 
-all: $(NAME)
+all: $(NAME) clean
 
 clean:
-		$(RM) $(OBJ)
+		$(RM) *.o
 
 fclean: clean
 		@/bin/rm -f $(NAME)
