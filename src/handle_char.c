@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:54:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/30 00:34:58 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/30 00:36:19 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	handle_char(t_desc info, va_list *arg, t_strlen *len)
 	}
 }
 
-void	handle_percent(t_desc info, va_list *arg, t_strlen *len)
+void	handle_percent(t_desc info, t_strlen *len)
 {
 	if (info.flag_zero)
 		info.filler = '0';
