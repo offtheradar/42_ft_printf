@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:54:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 12:13:14 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 17:02:37 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	handle_char(t_desc info, va_list *arg, t_strlen *len)
 	if (info.flag_neg)
 	{
 		ft_putchar(c);
-		ft_put_filler(' ', info.min_f_width - 1);
-		(*len) += info.min_f_width;
+		ft_put_filler(' ', info.min_f_width - 1, len);
+		(*len)++;
 	}
 	else if (info.min_f_width)
 	{
-		ft_put_filler(info.filler, info.min_f_width - 1);
+		ft_put_filler(info.filler, info.min_f_width - 1, len);
 		ft_putchar(c);
-		(*len) += info.min_f_width;
+		(*len)++;
 	}
 	else
 	{
@@ -54,9 +54,9 @@ void	handle_percent(t_desc info, va_list *arg, t_strlen *len)
 	}
 	else if (info.min_f_width)
 	{
-		ft_put_filler(info.filler, info.min_f_width - 1);
+		ft_put_filler(info.filler, info.min_f_width - 1, len);
 		ft_putchar('%');
-		(*len) += info.min_f_width;
+		(*len)++;
 	}
 	else
 	{

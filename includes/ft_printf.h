@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:57:40 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 12:42:59 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 17:53:26 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,24 @@ int				ft_num_len(intmax_t n);
 
 int				ft_unum_len(uintmax_t n);
 
-void			ft_putnbr_int_base(intmax_t n, char *base_chars, intmax_t base);
+void			ft_putnbr_int_base(intmax_t n, char *base_chars, intmax_t base,
+										t_strlen *len);
 
 void			ft_putnbr_uint_base(uintmax_t n, char *base_chars,
-										uintmax_t base);
+										uintmax_t base, t_strlen *len);
 
-void			ft_putnbr_dispatch(intmax_t n, t_desc info);
+void			ft_putnbr_dispatch(intmax_t n, t_desc info, t_strlen *len);
 
 intmax_t		cast_uint_from_len(t_desc info, intmax_t i);
 
 uintmax_t		cast_int_from_len(t_desc info, uintmax_t i);
 
+void			ft_print_num_flags(t_desc info, t_strlen *len);
 /*
 ****************************** Handle Flags ************************************
 */
 
-void			ft_put_filler(char filler, int n);
+void			ft_put_filler(char filler, int n, t_strlen *len);
 
 void			set_flags(char *str, int *i, t_desc *info);
 
@@ -114,7 +116,5 @@ void			set_len(char *str, int *i, t_desc *info);
 void			set_width(char *str, int *i, t_desc *info);
 
 void			set_precision(char *str, int *i, t_desc *info);
-
-void			ft_print_num_flags(t_desc info);
 
 #endif

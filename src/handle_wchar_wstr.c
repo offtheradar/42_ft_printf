@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 16:13:12 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 12:11:23 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 17:47:40 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	ft_putwstr_w_filler(wchar_t *str, int len, t_desc info,
 		if (info.flag_neg)
 		{
 			ft_putwstrn(str, len);
-			ft_put_filler(info.filler, info.min_f_width - len);
+			ft_put_filler(info.filler, info.min_f_width - len, str_len);
 		}
 		else
 		{
-			ft_put_filler(info.filler, info.min_f_width - len);
+			ft_put_filler(info.filler, info.min_f_width - len, str_len);
 			ft_putwstrn(str, len);
 		}
 		*(str_len) += len;
@@ -70,14 +70,19 @@ void	handle_wchar(t_desc info, va_list *arg, t_strlen *str_len)
 	if (info.flag_neg)
 	{
 		ft_putwchar(c);
-		ft_put_filler(' ', info.min_f_width - 1);
-		(*str_len) += info.min_f_width;
+		ft_put_filler(' ', info.min_f_width - 1, str_len);
+		(*str_len) += 1;
+	}
+	else if (info.min_f_width)
+	{
+		ft_put_filler(info.filler, info.min_f_width - 1, str_len);
+		ft_putwchar(c);
+		(*str_len) += 1;
 	}
 	else
 	{
-		ft_put_filler(info.filler, info.min_f_width - 1);
 		ft_putwchar(c);
-		(*str_len) += info.min_f_width;
+		(*str_len) += 1;
 	}
 }
 

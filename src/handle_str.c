@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:53:18 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 12:12:29 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 18:05:21 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	ft_putstr_w_filler(char *str, int len, t_desc info, t_strlen *str_len)
 		if (info.flag_neg)
 		{
 			ft_putstrn(str, len);
-			ft_put_filler(info.filler, info.min_f_width - len);
+			ft_put_filler(info.filler, info.min_f_width - len, str_len);
 		}
 		else
 		{
-			ft_put_filler(info.filler, info.min_f_width - len);
+			ft_put_filler(info.filler, info.min_f_width - len, str_len);
 			ft_putstrn(str, len);
 		}
 		*(str_len) += info.min_f_width;
