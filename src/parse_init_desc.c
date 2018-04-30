@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/30 11:30:29 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/30 15:19:14 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	handle_type(t_desc info, va_list *arg, t_strlen *len)
 	if (info.type == 'c' || info.type == 'C')
 		handle_char(info, arg, len);
 	if (info.type == 'o' || info.type == 'u' || info.type == 'x' ||
-		info.type == 'X' || info.type == 'p')
+		info.type == 'X' || info.type == 'p' || info.type == 'O')
 		handle_uint(info, arg, len);
-	if (info.type == 'D' || info.type == 'O' || info.type == 'U' ||
+	if (info.type == 'D' || info.type == 'U' ||
 		info.type == 'd' || info.type == 'i')
 		handle_int(info, arg, len);
 }
