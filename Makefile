@@ -6,7 +6,7 @@
 #    By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/24 14:36:20 by ysibous           #+#    #+#              #
-#    Updated: 2018/04/29 23:39:01 by ysibous          ###   ########.fr        #
+#    Updated: 2018/04/29 23:45:25 by ysibous          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ mlibft.a:
 
 $(NAME): mlibft.a
 	$(CC) $(CFLAGS) -c $(SRC)
+	ar -x $(LIBFT)
 	ar rcs $(NAME) *.o
 	ranlib $(NAME)
 
