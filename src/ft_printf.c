@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 20:56:53 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/29 21:05:17 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/04/29 23:37:40 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,4 @@ int		ft_printf(char *format, ...)
 	}
 	va_end(arg);
 	return (str_len + i);
-}
-
-int main(void)
-{
-	printf("%#10.5x\n", 255);
-	ft_printf("%#10.5x\n", 255);
 }
