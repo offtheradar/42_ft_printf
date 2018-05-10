@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/30 14:58:25 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/09 21:35:35 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void			ft_print_front_padding(t_desc info, int num_len, t_strlen *len)
 		if ((info.type == 'x' || info.type == 'X' || info.type == 'p') &&
 			info.min_f_width)
 			info.min_f_width -= 2;
-		if (info.type == 'o' && info.min_f_width)
-			info.min_f_width -= 1;
 		if (info.precision && info.min_f_width > info.precision
 				&& info.precision > num_len)
 			pad_size = info.min_f_width - info.precision;
