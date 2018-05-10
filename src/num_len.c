@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 18:53:09 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/28 18:53:54 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/09 22:12:53 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int				ft_num_len(intmax_t n)
 	return (len);
 }
 
-int				ft_unum_len(uintmax_t n)
+int				ft_unum_len(uintmax_t n, uintmax_t base)
 {
 	int len;
 
@@ -33,7 +33,7 @@ int				ft_unum_len(uintmax_t n)
 	while (n)
 	{
 		len++;
-		n /= 10;
+		n /= base;
 	}
 	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/09 21:35:35 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/09 22:15:18 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void			handle_int(t_desc info, va_list *arg, t_strlen *len)
 		u = i;
 		info.sign = '+';
 	}
-	num_len = ft_unum_len(u);
+	num_len = ft_unum_len(u, 10);
 	ft_print_front_padding(info, num_len, len);
 	ft_putnbr_int_base(i, "0123456789", 10, len);
 	if (info.min_f_width || info.precision)
@@ -97,10 +97,15 @@ void			handle_int(t_desc info, va_list *arg, t_strlen *len)
 void			handle_uint(t_desc info, va_list *arg, t_strlen *len)
 {
 	uintmax_t	i;
+	uintmax_t	base;
 	int			num_len;
 
+	if (info.type == 'o' || info.type == 'O')
+		base = 8;
+	else
+		base = 10;
 	i = cast_int_from_len(info, va_arg(*arg, uintmax_t));
-	num_len = ft_unum_len(i);
+	num_len = ft_unum_len(i, 8);
 	ft_print_front_padding(info, num_len, len);
 	ft_putnbr_dispatch(i, info, len);
 	if (info.min_f_width || info.precision)
