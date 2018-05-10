@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:56:14 by ysibous           #+#    #+#             */
-/*   Updated: 2018/04/30 15:19:14 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/09 21:32:18 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	init_descriptor(t_desc *info)
 int		is_valid_type(char x)
 {
 	return ((x == 'S' || x == 's' || x == 'p' || x == 'D'
-				|| x == 'd' || x == 'i' || x == 'O' ||
+				|| x == 'd' || x == 'i' || x == 'O' || x == 'o' ||
 				x == 'u' || x == 'U' || x == 'x' || x == 'X'
 				|| x == 'c' || x == 'C' || x == '%') ? 1 : 0);
 }
