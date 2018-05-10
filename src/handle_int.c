@@ -6,7 +6,7 @@
 /*   By: ysibous <ysibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 20:52:48 by ysibous           #+#    #+#             */
-/*   Updated: 2018/05/09 22:15:18 by ysibous          ###   ########.fr       */
+/*   Updated: 2018/05/09 22:18:30 by ysibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void			handle_uint(t_desc info, va_list *arg, t_strlen *len)
 
 	if (info.type == 'o' || info.type == 'O')
 		base = 8;
+	else if (info.type == 'x' || info.type == 'X')
+		base = 16;
 	else
 		base = 10;
 	i = cast_int_from_len(info, va_arg(*arg, uintmax_t));
